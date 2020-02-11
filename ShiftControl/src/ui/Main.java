@@ -7,8 +7,8 @@ import model.ShiftControler;
 
 public class Main {
 //Attributes
-	private Scanner lector;
-	private Main main;
+	private static  Scanner lector;
+	private static Main main;
 	private ShiftControler system;
 //Methods
 	public Main() {
@@ -16,22 +16,11 @@ public class Main {
 		system = new ShiftControler();
 	}
 	public static void main(String args[]) {
-		int nOne=0;
-		int nTwo=0;
-		char[] letters = new char[26];
-		for(int i=0;i<26;i++) {
-			letters[i]=(char)('A'+i);
-			nOne=0;
-			nTwo=0;
-			for(int w=0;w<10;w++) {
-				for(int j=0;j<10;j++) {
-					System.out.println(letters[i]+""+nOne+""+nTwo);
-					nTwo++;
-				}
-				nOne++;
-				nTwo=0;
-			}
-		}
+		main = new Main();
+		int i=0;
+		do {
+		 i = lector.nextInt();
+		}while(i!=2);
 	}
 	public void menu() {
 		int option=0;

@@ -15,7 +15,8 @@ public class ShiftControler {
 		users = new ArrayList<User>();
 		shifts = new ArrayList<Shift>();
 	}
-	public void assignShifts() {
+	public String assignShifts() {
+		String numberShift=""; 
 		boolean cont=false;
 		boolean p = false;
 		boolean status=false;
@@ -28,6 +29,7 @@ public class ShiftControler {
 		for(int w=0;w<10 && !cont;w++) {
 				for(int j=0;j<10 && !cont;j++) {
 						shift= new Shift(letters[k],Integer.toString(nOne),Integer.toString(nTwo),status);
+						numberShift= shift.getShift();
 						cont=true;
 						nTwo++;
 					}
@@ -36,6 +38,7 @@ public class ShiftControler {
 						nOne++;
 					}
 				}
+		return numberShift;
 	}
 	public void abecedario() {
 		for(int e=0;e<letters.length;e++) {
@@ -44,8 +47,7 @@ public class ShiftControler {
 		
 	}
 	public void addUser(String name,String id,String type,String phone,String adress) {
-		Shift shift=null;
-		User user = new User(name,type,id,phone,adress,shift);
+		User user = new User(name,type,id,phone,adress);
 		users.add(user);
 	}
 	public String registerShifts(String id) {
@@ -55,6 +57,7 @@ public class ShiftControler {
 			if(users.get(i).getId().equalsIgnoreCase(id)) {
 				cont =true;
 				msg = "The id is registred";
+				assigh
 			}
 		}
 		return msg;

@@ -7,15 +7,14 @@ public class User {
 	private String  id;
 	private String phone;
 	private String adress;
-	private Shift shift;
+	private String shift;
 //Methods
-	public User(String n,String t,String i, String p,String a,Shift sh) {
+	public User(String n,String t,String i, String p,String a) {
 		name=n;
 		typeId=t;
 		id=i;
 		phone=p;
 		adress=a;
-		shift=sh;
 	}
 	public String getName() {
 		return name;

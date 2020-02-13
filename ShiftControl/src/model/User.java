@@ -1,6 +1,12 @@
 package model;
 
 public class User {
+//Constants
+	public static final String IDENTIFICATION_CARD="Identification card";
+	public static final String IDENTY_CARD="Identy card";
+	public static final String PASSPORT="Passport";
+	public static final String CIVIL_REGISTRATION="Civil registration";
+	public static final String FOREIGNER_ID = "Foreigner id";
 //Attributes
 	private String name;
 	private String typeId;
@@ -31,4 +37,5 @@ public class User {
 	public String getAdress() {
 		return adress;
 	}
+
 }

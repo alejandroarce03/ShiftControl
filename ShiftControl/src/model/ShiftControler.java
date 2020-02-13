@@ -29,7 +29,9 @@ public class ShiftControler {
 		for(int w=0;w<10 && !cont;w++) {
 				for(int j=0;j<10 && !cont;j++) {
 						shift= new Shift(letters[k],Integer.toString(nOne),Integer.toString(nTwo),status);
+						shifts.add(shift);
 						numberShift= shift.getShift();
+						System.out.print(letters[k]+""+nOne+""+nTwo);
 						cont=true;
 						nTwo++;
 					}
@@ -53,13 +55,31 @@ public class ShiftControler {
 	public String registerShifts(String id) {
 		String msg = "";
 		boolean cont=false;
+		
 		for(int i=0;i<users.size() && !cont;i++) {
 			if(users.get(i).getId().equalsIgnoreCase(id)) {
 				cont =true;
-				msg = "The id is registred";
-				assigh
+				msg = "The id is registred, your turn is "+assignShifts();
+				for(int w=0;w<shifts.size();w++) {
+					if(shifts.get(w).getShift().equalsIgnoreCase(assignShifts())) {
+						shifts.get(w).setId(users.get(i).getId());
+					}
+				}
+			
+				
 			}
 		}
 		return msg;
 	}
-}
+	public boolean searchUser(String id) {
+		boolean user=false;
+		for(int i=0;i<users.size();i++) {
+			if(users.get(i).getId().equalsIgnoreCase(id)) {
+				user=true;
+			}
+				
+		}
+		return user;
+	}
+	}
+

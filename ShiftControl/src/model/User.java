@@ -37,5 +37,12 @@ public class User {
 	public String getAdress() {
 		return adress;
 	}
+	public void setShift(String s) {
+		shift = s;
+		
+	}
+	public String getShift() {
+		return shift;
+	}
 
 }

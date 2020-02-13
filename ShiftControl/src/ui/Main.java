@@ -49,13 +49,9 @@ public class Main {
 		case 2:
 			System.out.print("Enter the id: ");
 			String idSearch = lector.nextLine();
-			String m = system.registerShifts(idSearch);
-			if(m==null) {
-				System.out.println("The id is not registred");
-				System.out.println("Enter number 1 to register");
-			}else {
-				system.registerShifts(idSearch);
-			}
+			System.out.println(system.registerShifts(idSearch));
+			
+		break;
 		}
 		
 	}while(option!=5);

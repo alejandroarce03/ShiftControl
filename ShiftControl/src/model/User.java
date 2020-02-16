@@ -15,10 +15,12 @@ public class User {
 	private String adress;
 	private String shift;
 //Methods
-	public User(String n,String t,String i) {
+	public User(String n,String t,String i,String p,String a) {
 		name=n;
 		typeId=t;
 		id=i;
+		adress=a;
+		phone=p;
 
 	}
 	public void setAdress(String a) {

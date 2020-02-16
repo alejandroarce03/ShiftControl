@@ -23,7 +23,7 @@ public class Main {
 		main.menu();
 	}
 	public void menu() {
-		system.abecedario();
+		system.alphabet();
 		int option=0;
 		do {
 			try {
@@ -37,7 +37,7 @@ public class Main {
 		case 1: 
 			System.out.print("Enter Complete name: ");
 			String name = lector.nextLine();
-			System.out.print("Enter type of id(IDENTIFICATION_CARD,IDENTY_CARD,PASSPORT,CIVIL_REGISTRATION,FOREIGNER_ID): ");
+			System.out.print("Enter type of docuemnt(IDENTIFICATION_CARD,IDENTY_CARD,PASSPORT,CIVIL_REGISTRATION,FOREIGNER_ID): ");
 			String type = lector.nextLine();
 			System.out.print("Enter Id: ");
 			try {

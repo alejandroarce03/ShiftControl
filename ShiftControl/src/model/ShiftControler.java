@@ -52,20 +52,19 @@ public class ShiftControler {
 		
 		return numberShift;
 	}
-	public void abecedario() {
+	public void alphabet() {
 		for(int e=0;e<letters.length;e++) {
 			letters[e]=(char)('A'+e);
 		}
 		
 	}
-	public void addUser(String name,String id,String type,String phone,String adress) throws RequiredFieldsException {
+	public User addUser(String name,String id,String type,String phone,String adress) throws RequiredFieldsException {
 		if(name.equalsIgnoreCase("") || id.equalsIgnoreCase("") || type.equalsIgnoreCase("")) {
 			throw new RequiredFieldsException();
 		}
-		User user = new User(name,type,id);
-		user.setAdress(adress);
-		user.setPhone(phone);
+		User user = new User(name,type,id,phone,adress);
 		users.add(user);
+		return user;
 	}
 	public String registerShifts(String id) {
 		String msg = "";
@@ -136,5 +135,11 @@ public class ShiftControler {
 			throw new TypeOfDocumentImproperException(type);
 		return msg;
 	}
+	public ArrayList<User> getUsers(){
+		return users;
 	}
+	public ArrayList<Shift> getShifts(){
+		return shifts;
+	}
+}
 

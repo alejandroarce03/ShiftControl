@@ -2,6 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
+import customExceptions.RequiredFieldsException;
+import customExceptions.TypeOfDocumentImproperException;
+import customExceptions.UserExistException;
+
 public class ShiftControler {
 //Attributes
 	private ArrayList<User> users;
@@ -19,7 +23,7 @@ public class ShiftControler {
 		String numberShift=""; 
 		boolean cont=false;
 		boolean p = false;
-		boolean status=false;
+		boolean status=true;
 		Shift shift;
 		if(k==25 && nOne==9 && nTwo==9 ) {
 			k=0;
@@ -54,8 +58,13 @@ public class ShiftControler {
 		}
 		
 	}
-	public void addUser(String name,String id,String type,String phone,String adress) {
-		User user = new User(name,type,id,phone,adress);
+	public void addUser(String name,String id,String type,String phone,String adress) throws RequiredFieldsException {
+		if(name.equalsIgnoreCase("") || id.equalsIgnoreCase("") || type.equalsIgnoreCase("")) {
+			throw new RequiredFieldsException();
+		}
+		User user = new User(name,type,id);
+		user.setAdress(adress);
+		user.setPhone(phone);
 		users.add(user);
 	}
 	public String registerShifts(String id) {
@@ -74,15 +83,58 @@ public class ShiftControler {
 					
 		return msg;
 	}
-	public boolean searchUser(String id) {
-		boolean user=false;
+	public void searchUser(String id)throws UserExistException {
 		for(int i=0;i<users.size();i++) {
 			if(users.get(i).getId().equalsIgnoreCase(id)) {
-				user=true;
+				throw new UserExistException();
 			}
 				
 		}
-		return user;
+	}
+	public String checkAttendShift(String id) {
+		String msg="";
+		boolean cont=false;
+		for(int i=0;i<shifts.size();i++) {
+			System.out.println("hola mundo");
+			if(shifts.get(i).getId().equalsIgnoreCase(id)) {
+				if((shifts.get(i).getStatus()));
+				System.out.println("hola mundo");
+					msg="Your turn has not been attended yet";
+					cont=true;
+			}
+		}
+		return msg;
+	}
+	public String attendShift() {
+		String msg=".";
+		boolean attend=false;
+		boolean cont=false;
+		for(int i=0;i<shifts.size();i++) {
+			System.out.println("entra");
+			if(shifts.get(i).getStatus() && shifts.get(i).getId()!=null) {
+				shifts.get(i).setStatus(attend);
+				msg="Turn "+shifts.get(i).getShift()+" user: "+ nameOfUser(shifts.get(i).getId());
+				cont = true;
+			}
+		}
+		return msg;
+	}
+	public String nameOfUser(String id) {
+		String name="";
+		for(int i=0;i<users.size();i++) {
+			if(users.get(i).getId().equalsIgnoreCase(id)) {
+				name=users.get(i).getName();
+			}
+		}
+		return name;
+	}
+	public String typeDocument(String type)throws TypeOfDocumentImproperException{
+		String msg="";
+		if(type.equalsIgnoreCase("Identification card") || type.equalsIgnoreCase("Identy card") || type.equalsIgnoreCase("Passport") || type.equalsIgnoreCase("Civil registration") || type.equalsIgnoreCase("Foreigner id")) {
+			msg="The type is correct";
+		}else
+			throw new TypeOfDocumentImproperException(type);
+		return msg;
 	}
 	}
 

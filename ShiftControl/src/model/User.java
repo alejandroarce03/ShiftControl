@@ -15,12 +15,17 @@ public class User {
 	private String adress;
 	private String shift;
 //Methods
-	public User(String n,String t,String i, String p,String a) {
+	public User(String n,String t,String i) {
 		name=n;
 		typeId=t;
 		id=i;
-		phone=p;
+
+	}
+	public void setAdress(String a) {
 		adress=a;
+	}
+	public void setPhone(String p) {
+		phone=p;
 	}
 	public String getName() {
 		return name;

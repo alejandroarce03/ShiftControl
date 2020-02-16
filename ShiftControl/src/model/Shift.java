@@ -23,5 +23,14 @@ public class Shift {
 	public void setId(String identification) {
 		id = identification;
 	}
+	public String getId() {
+		return id;
+	}
+	public boolean getStatus() {
+		return status;
+	}
+	public void setStatus(boolean s) {
+		status=s;
+	}
 	
 }
